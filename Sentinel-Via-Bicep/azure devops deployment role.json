@@ -1,0 +1,22 @@
+{ 
+  "properties": { 
+    "roleName": "Azure DevOps Least Privileged Deployment", 
+    "description": "Minimal permissions to deploy Azure resources using ARM templates", 
+    "assignableScopes": [ 
+      "/subscriptions/YOUR SUBSCRIPTION ID HERE" 
+    ], 
+    "permissions": [ 
+      { 
+        "actions": [ 
+          "Microsoft.Resources/deployments/read", 
+          "Microsoft.Resources/deployments/write", 
+          "Microsoft.Resources/deployments/validate/action", 
+          "Microsoft.Resources/deployments/operationStatuses/read" 
+        ], 
+        "notActions": [], 
+        "dataActions": [], 
+        "notDataActions": [] 
+      } 
+    ] 
+  } 
+}
