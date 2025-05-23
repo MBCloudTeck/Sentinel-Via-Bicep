@@ -64,12 +64,15 @@ stages:
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
-                echo "Starting Bicep Deployment..."
-                az deployment sub create \
-                  --location '$(REGION)' \
-                  --template-file ./Sentinel-Via-Bicep/Bicep/main.bicep
-                  --parameters rgLocation='$(REGION)' rgName='$(RESOURCEGROUP)' lawName='$(WORKSPACENAME)' dailyQuota='$(DAILYQUOTA)'
-
+                 echo "Starting Bicep Deployment..."
+                 az deployment sub create \
+                   --location '$(REGION)' \
+                   --template-file ./Sentinel-Via-Bicep/Bicep/main.bicep \
+                   --parameters \
+                     rgLocation='$(REGION)' \
+                     rgName='$(RESOURCEGROUP)' \
+                     lawName='$(WORKSPACENAME)' \
+                     dailyQuota='$(DAILYQUOTA)'
   # ============================================================================
   # Stage: EnableSentinelContentHub
   # Always runs to enable Sentinel solutions and configure alert rules.
