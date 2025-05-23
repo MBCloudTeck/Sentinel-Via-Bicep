@@ -67,7 +67,7 @@ stages:
                 echo "Starting Bicep Deployment..."
                 az deployment sub create \
                   --location '$(REGION)' \
-                  --template-file Bicep/main.bicep \
+                  --template-file ./Sentinel-Via-Bicep/Bicep/main.bicep
                   --parameters rgLocation='$(REGION)' rgName='$(RESOURCEGROUP)' lawName='$(WORKSPACENAME)' dailyQuota='$(DAILYQUOTA)'
 
   # ============================================================================
@@ -90,7 +90,7 @@ stages:
             inputs:
               azureSubscription: $(azureSubscription)
               ScriptType: 'FilePath'
-              ScriptPath: '$(Build.SourcesDirectory)/Scripts/Set-SentinelContent.ps1'
+              ScriptPath: '$(Build.SourcesDirectory)/Sentinel-Via-Bicep/Scripts/Set-SentinelContent.ps1'
               ScriptArguments: >
                 -ResourceGroup '$(RESOURCEGROUP)' 
                 -Workspace '$(WORKSPACENAME)' 
